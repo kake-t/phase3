@@ -1,4 +1,8 @@
 <h1>index</h1>
+<%= link_to 'new',new_picture_path %>
+
 <% @pictures.each do |picture| %>
-<%= picture %>
+<%= picture.title %>
+<%= image_tag picture.image %>
+<%= picture.content %>
 <% end %>
