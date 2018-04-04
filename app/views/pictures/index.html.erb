@@ -2,7 +2,7 @@
 <%= link_to 'new',new_picture_path %>
 
 <% @pictures.each do |picture| %>
-<%= picture.title %>
-<%= image_tag picture.image %>
-<%= picture.content %>
+  <%= picture.title %>
+  <%= image_tag (picture.image) %>
+  <%= picture.content %>
 <% end %>

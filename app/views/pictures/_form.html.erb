@@ -1,9 +1,19 @@
 <%= form_with(model: @picture, local: true) do |form| %>
-<%= form.label :title %>
-<%= form.text_field :title %>
-<%= form.label :image %>
-<%= form.file_field :image %>
-<%= form.label :content %>
-<%= form.text_area :content %>
-<%= form.submit %>
+<!-- エラー表示 -->
+<% if @picture.errors.any? %>
+  <% @picture.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
+
+  <%= form.label :image %>
+  <%= form.file_field :image %>
+  <%= form.hidden_field :image_cache %>
+
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.label :content %>
+  <%= form.text_area :content %>
+  <%= form.submit %>
 <% end %>

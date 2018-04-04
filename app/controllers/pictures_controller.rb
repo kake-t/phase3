@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action 
+  before_action
   def top; end
 
   def index
@@ -17,14 +17,22 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(pictures_params)
-    @picture.save
-    redirect_to pictures_path
+    @picture = Picture.new(picture_params)
+    if @picture.save
+      redirect_to pictures_path
+    else
+      render 'new'
+    end
   end
 
   private
-  def pictures_params
-    params.require(:picture).permit(:image, :title, :content, :user_name)
+
+  def picture_params
+    params.require(:picture).permit(:image,
+                                    :image_cache,
+                                    :title,
+                                    :content,
+                                    :user_name)
   end
 
   def set_picture
