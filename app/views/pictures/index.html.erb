@@ -2,7 +2,16 @@
 <%= link_to 'new',new_picture_path %>
 
 <% @pictures.each do |picture| %>
-  <%= picture.title %>
-  <%= image_tag (picture.image) %>
-  <%= picture.content %>
+  <div>
+    <%= picture.title %>
+  </div>
+  <div>
+    <%= image_tag (picture.image) %>
+  </div>
+  <div>
+    <%= picture.content %>
+  </div>
+  <div class="">
+    <%= link_to 'show', picture_path(picture.id) %>
+  </div>
 <% end %>

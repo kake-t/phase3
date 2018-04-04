@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action
+  before_action :set_picture, only: %i[show]
   def top; end
 
   def index
@@ -36,5 +36,6 @@ class PicturesController < ApplicationController
   end
 
   def set_picture
+    @picture = Picture.find(params[:id])
   end
 end
