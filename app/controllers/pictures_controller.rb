@@ -16,6 +16,15 @@ class PicturesController < ApplicationController
   def edit
   end
 
+  def create
+    @picture = Picture.new(picture_params)
+    if @picture.save
+      redirect_to pictures_path
+    else
+      render 'new'
+    end
+  end
+
   def update
     if @picture.update(picture_params)
       redirect_to pictures_path
@@ -24,13 +33,9 @@ class PicturesController < ApplicationController
     end
   end
 
-  def create
-    @picture = Picture.new(picture_params)
-    if @picture.save
-      redirect_to pictures_path
-    else
-      render 'new'
-    end
+  def destroy
+    @picture.destroy
+    redirect_to pictures_path, notice: '削除しました'
   end
 
   private
