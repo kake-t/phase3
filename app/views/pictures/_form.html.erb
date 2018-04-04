@@ -7,7 +7,7 @@
 <% end %>
 
   <%= form.label :image %>
-  <%= form.file_field :image %>
+  <%= form.file_field :image, accept:'image/jpg, image/jpeg, image/gif, image/png' %>
   <%= form.hidden_field :image_cache %>
 
   <%= form.label :title %>
