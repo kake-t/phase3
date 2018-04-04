@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: %i[show]
+  before_action :set_picture, only: %i[show edit update destroy]
   def top; end
 
   def index
@@ -14,6 +14,14 @@ class PicturesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @picture.update(picture_params)
+      redirect_to pictures_path
+    else
+      render 'edit'
+    end
   end
 
   def create
