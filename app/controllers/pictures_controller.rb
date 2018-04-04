@@ -18,8 +18,9 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
+    @picture.image.retrieve_from_cache! params[:cache][:image]
     if @picture.save
-      redirect_to pictures_path
+      redirect_to pictures_path, notice: '作成しました'
     else
       render 'new'
     end
@@ -27,7 +28,7 @@ class PicturesController < ApplicationController
 
   def update
     if @picture.update(picture_params)
-      redirect_to pictures_path
+      redirect_to pictures_path, notice: '編集しました'
     else
       render 'edit'
     end
@@ -36,6 +37,11 @@ class PicturesController < ApplicationController
   def destroy
     @picture.destroy
     redirect_to pictures_path, notice: '削除しました'
+  end
+
+  def confirm
+    @picture = Picture.new(picture_params)
+    render 'new' if @picture.invalid?
   end
 
   private

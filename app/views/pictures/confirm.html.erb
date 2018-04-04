@@ -1,0 +1,20 @@
+<h1>confirm</h1>
+
+<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
+
+  <p><%= image_tag @picture.image.url %></p>
+  <p><%= @picture.title %></p>
+  <p><%= @picture.content %></p>
+
+  <%= form.submit 'はい' %>
+<% end %>
+
+<%= form_with(model: @picture, url: new_picture_path, local: true, method: :get) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
+  <%= form.submit 'いいえ', name: :back %>
+<% end %>
