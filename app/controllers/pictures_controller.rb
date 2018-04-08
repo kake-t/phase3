@@ -23,7 +23,9 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.new(picture_params)
+    @picture.user_id = current_user.id
+    @picture.user_name = current_user.name
     @picture.image.retrieve_from_cache! params[:cache][:image]
     if @picture.save
       redirect_to pictures_path, notice: '作成しました'
@@ -46,7 +48,7 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.new(picture_params)
     render 'new' if @picture.invalid?
   end
 

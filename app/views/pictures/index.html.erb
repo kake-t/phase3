@@ -6,7 +6,10 @@
 
 <% @pictures.each do |picture| %>
   <div>
-    <%= picture.title %>
+    タイトル：<%= picture.title %>
+  </div>
+  <div>
+    投稿者：<%= picture.user_name %>
   </div>
   <div>
     <%= image_tag (picture.image) %>
