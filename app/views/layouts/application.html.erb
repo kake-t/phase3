@@ -9,6 +9,18 @@
   </head>
 
   <body>
+    <header>
+      <!-- ログイン中か否かで表示が変わる -->
+      <% if logged_in? %>
+        <%= link_to "user_show", user_path(current_user.id) %>
+        <%= link_to "session_destroy", session_path(current_user.id), method: :delete %>
+      <% else %>
+        <%= link_to "user_new", new_user_path %>
+        <%= link_to "session_new", new_session_path %>
+      <% end %>
+    </header>
+
     <%= yield %>
+
   </body>
 </html>
