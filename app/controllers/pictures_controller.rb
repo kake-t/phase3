@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: %i[show edit update destroy]
+  before_action :return_to_login, only: %i[new edit show]
+
   def top; end
 
   def index
@@ -60,5 +62,9 @@ class PicturesController < ApplicationController
 
   def set_picture
     @picture = Picture.find(params[:id])
+  end
+
+  def return_to_login
+    redirect_to new_session_path unless logged_in?
   end
 end
