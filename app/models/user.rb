@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
 
   validates :name, presence: true,
                    length: { maximum: 30 }
