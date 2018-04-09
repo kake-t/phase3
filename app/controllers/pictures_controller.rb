@@ -29,6 +29,8 @@ class PicturesController < ApplicationController
     @picture.user_name = current_user.name
     @picture.image.retrieve_from_cache! params[:cache][:image]
     if @picture.save
+      # メール送信
+      PictureMailer.picture_mail(@picture).deliver
       redirect_to pictures_path, notice: '作成しました'
     else
       render 'new'
