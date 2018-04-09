@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     end
   end
   resources :users
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   get '/', to: 'pictures#top'
 end
