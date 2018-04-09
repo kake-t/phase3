@@ -15,7 +15,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @favorite_pictures = current_user.favorite_pictures
+  end
 
   private
 

@@ -10,9 +10,9 @@ class PicturesController < ApplicationController
 
   def new
     @picture = if params[:back]
-                 Picture.new(picture_params)
+                 current_user.pictures.new(picture_params)
                else
-                 Picture.new
+                 current_user.pictures.new
                end
   end
 

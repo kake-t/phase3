@@ -1,1 +1,8 @@
 <h1>user_show</h1>
+<!-- お気に入り一覧 -->
+<% @favorite_pictures.each do |favorite_picture| %>
+  <p><%= favorite_picture.title %></p>
+  <p><%= favorite_picture.user_name %></p>
+  <p><%= image_tag favorite_picture.image %></p>
+  <p><%= favorite_picture.content %></p>
+<% end %>
