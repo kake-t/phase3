@@ -6,4 +6,12 @@ module PicturesHelper
       picture_path
     end
   end
+
+  def session_or_pictures
+    if logged_in?
+      pictures_path
+    else
+      new_session_path
+    end
+  end
 end

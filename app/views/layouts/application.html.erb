@@ -9,20 +9,33 @@
   </head>
 
   <body>
-    <header>
-      <%= link_to 'top', '/' %>
-      <!-- ログイン中か否かで表示が変わる -->
-      <% if logged_in? %>
-        <%= link_to "#{current_user.name}のページ", user_path(current_user.id) %>
-        <%= link_to "session_destroy", session_path(current_user.id), method: :delete %>
-      <% else %>
-        <%= link_to "user_new", new_user_path %>
-        <%= link_to "session_new", new_session_path %>
-      <% end %>
-    </header>
+<!-- header -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- ナビバーのヘッダー -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Clone</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'トップ', '/' %></li>
+            <!-- ログイン中か否かで表示が変わる -->
+            <% if logged_in? %>
+              <li><%= link_to "#{current_user.name}のページ", user_path(current_user.id) %></li>
+              <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+            <% else %>
+              <li><%= link_to "ユーザー登録", new_user_path %></li>
+              <li><%= link_to "ログイン", new_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <%= yield %>
 
+<!-- footer -->
     <footer class="footer">
       <div class="container">
         <p class="text-muted text-center">Instagram clone 2018</p>
