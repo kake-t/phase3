@@ -10,6 +10,7 @@
 
   <body>
     <header>
+      <%= link_to 'top', '/' %>
       <!-- ログイン中か否かで表示が変わる -->
       <% if logged_in? %>
         <%= link_to "#{current_user.name}のページ", user_path(current_user.id) %>
@@ -22,5 +23,10 @@
 
     <%= yield %>
 
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted text-center">Instagram clone 2018</p>
+      </div>
+    </footer>
   </body>
 </html>

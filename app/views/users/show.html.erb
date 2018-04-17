@@ -1,8 +1,20 @@
-<h1>user_show</h1>
+<div class="">
+  <p>ユーザー名：<%= current_user.name %></p>
+  <p>email：<%= current_user.email %></p>
+</div>
+
+<%= link_to '投稿一覧に戻る', pictures_path %>
+
 <!-- お気に入り一覧 -->
+<div class="">
+  お気に入り一覧
+</div>
+
 <% @favorite_pictures.each do |favorite_picture| %>
   <p><%= favorite_picture.title %></p>
   <p><%= favorite_picture.user_name %></p>
   <p><%= image_tag favorite_picture.image %></p>
   <p><%= favorite_picture.content %></p>
 <% end %>
+
+<%= link_to '投稿一覧に戻る', pictures_path %>
