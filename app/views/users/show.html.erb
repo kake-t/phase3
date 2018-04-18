@@ -1,20 +1,25 @@
-<div class="">
+<div class="container text-center">
   <p>ユーザー名：<%= current_user.name %></p>
   <p>email：<%= current_user.email %></p>
 </div>
 
-<%= link_to '投稿一覧に戻る', pictures_path %>
-
 <!-- お気に入り一覧 -->
-<div class="">
-  お気に入り一覧
+<div class="container">
+  <h3 class="text-center">お気に入り一覧</h3>
+    <div class="row">
+      <% @favorite_pictures.each do |favorite_picture| %>
+        <div class="col-xs-6 col-xs-offset-3 panel panel-success none-padding">
+          <div class="panel-heading">
+            <p><%= favorite_picture.title %></p>
+            <p>投稿者：<%= favorite_picture.user_name %></p>
+          </div>
+          <div class="panel-body panel-body-background-color">
+            <p><%= image_tag favorite_picture.image %></p>
+            <p><%= favorite_picture.content %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
 </div>
-
-<% @favorite_pictures.each do |favorite_picture| %>
-  <p><%= favorite_picture.title %></p>
-  <p><%= favorite_picture.user_name %></p>
-  <p><%= image_tag favorite_picture.image %></p>
-  <p><%= favorite_picture.content %></p>
-<% end %>
 
 <%= link_to '投稿一覧に戻る', pictures_path %>
