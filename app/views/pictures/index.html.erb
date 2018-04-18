@@ -9,11 +9,11 @@
     <p> タイトル：<%= picture.title %></p>
     <p> 投稿者：<%= picture.user_name %></p>
     </div>
-    <div class="panel-body">
+    <div class="panel-body panel-body-background-color">
       <p><%= image_tag (picture.image) %></p>
       <p><%= picture.content %></p>
     </div>
-    <div class="">
+    <div class="panel-body-background-color">
       <%= link_to '詳細', picture_path(picture.id), class: 'btn btn-info' %>
       <%= link_to '編集', edit_picture_path(picture.id) %>
       <%= link_to '削除', picture_path(picture.id), method: :delete ,data: {confirm: '削除していいですか？'} %>
