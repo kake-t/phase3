@@ -1,9 +1,6 @@
-<h1>edit</h1>
-<%= link_to 'index', pictures_path %>
-<div class="">
-  現在の画像
-</div>
-<div class="">
-  <%= image_tag @picture.image.url(:thumb) %>
+<!-- <h1>edit</h1> -->
+<div class="container text-center">
+  現在の画像<br>
+  <%= image_tag @picture.image.url %>
 </div>
 <%= render 'form' %>
