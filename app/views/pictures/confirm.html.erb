@@ -1,20 +1,24 @@
-<h1>confirm</h1>
+<div class="container margin-top-up">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h3>この投稿でよろしいですか</h3>
+      <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+        <%= form.hidden_field :title %>
+        <%= form.hidden_field :content %>
+        <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
 
-<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
+        <p><%= image_tag @picture.image.url %></p>
+        <p><%= @picture.title %></p>
+        <p><%= @picture.content %></p>
+        <%= form.submit 'はい' %>
+      <% end %>
 
-  <p><%= image_tag @picture.image.url %></p>
-  <p><%= @picture.title %></p>
-  <p><%= @picture.content %></p>
-
-  <%= form.submit 'はい' %>
-<% end %>
-
-<%= form_with(model: @picture, url: new_picture_path, local: true, method: :get) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
-  <%= form.submit 'いいえ', name: :back %>
-<% end %>
+      <%= form_with(model: @picture, url: new_picture_path, local: true, method: :get) do |form| %>
+        <%= form.hidden_field :title %>
+        <%= form.hidden_field :content %>
+        <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
+        <%= form.submit 'いいえ', name: :back %>
+      <% end %>
+    </div>
+  </div>
+</div>
