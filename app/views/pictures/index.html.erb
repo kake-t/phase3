@@ -15,8 +15,12 @@
     </div>
     <div class="panel-body-background-color">
       <%= link_to '詳細', picture_path(picture.id), class: 'btn btn-info' %>
-      <%= link_to '編集', edit_picture_path(picture.id) %>
-      <%= link_to '削除', picture_path(picture.id), method: :delete ,data: {confirm: '削除していいですか？'} %>
+      <!-- 投稿者のみ表示させる -->
+      <% if current_user.id == picture.user_id %>
+        <%= link_to '編集', edit_picture_path(picture.id) %>
+        <%= link_to '削除', picture_path(picture.id), method: :delete ,data: {confirm: '削除していいですか？'} %>
+      <% end %>
+
     </div>
   </div>
   <% end %>
