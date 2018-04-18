@@ -1,25 +1,24 @@
-<h1>show</h1>
-<div class="">
-  <%= image_tag @picture.image %>
+<!-- show -->
+<div class="container text-center">
+  <div class="panel panel-success none-margin">
+    <div class="panel-heading">
+  <p><%= @picture.title %></p>
+  <p>投稿者：<%= @picture.user_name %></p>
 </div>
-<div class="">
-  <%= @picture.user_name %>
 </div>
-<div class="">
-  <%= @picture.title %>
+<div class="panel-body panel-body-background-color">
+  <p><%= image_tag @picture.image %></p>
+  <p><%= @picture.content %></p>
 </div>
-<div class="">
-  <%= @picture.content %>
-</div>
-<div class="">
-  <%= link_to 'index', pictures_path %>
 </div>
 
 <!-- お気に入りボタン -->
 <% unless @picture.user == current_user %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除', favorite_path(picture_id: @picture.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入り登録', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
+  <div class="container text-center">
+    <% if @favorite.present? %>
+      <%= link_to 'お気に入り解除', favorite_path(picture_id: @picture.id), method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to 'お気に入り登録', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 <% end %>
