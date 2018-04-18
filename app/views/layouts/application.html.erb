@@ -19,9 +19,10 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'トップ', '/' %></li>
+            <li><%= link_to '一覧', pictures_path %></li>
             <!-- ログイン中か否かで表示が変わる -->
             <% if logged_in? %>
+              <li><%= link_to "新規投稿", new_picture_path %></li>
               <li><%= link_to "#{current_user.name}のページ", user_path(current_user.id) %></li>
               <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
             <% else %>

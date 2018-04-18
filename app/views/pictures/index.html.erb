@@ -1,25 +1,23 @@
 <% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
-<h1>index</h1>
-<%= link_to 'new',new_picture_path %>
 
-<% @pictures.each do |picture| %>
-  <div>
-    タイトル：<%= picture.title %>
+<div class="container text-center">
+  <% @pictures.each do |picture| %>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+    <p> タイトル：<%= picture.title %></p>
+    <p> 投稿者：<%= picture.user_name %></p>
+    </div>
+    <div class="panel-body">
+      <p><%= image_tag (picture.image) %></p>
+      <p><%= picture.content %></p>
+    </div>
+    <div class="">
+      <%= link_to '詳細', picture_path(picture.id), class: 'btn btn-info' %>
+      <%= link_to '編集', edit_picture_path(picture.id) %>
+      <%= link_to '削除', picture_path(picture.id), method: :delete ,data: {confirm: '削除していいですか？'} %>
+    </div>
   </div>
-  <div>
-    投稿者：<%= picture.user_name %>
-  </div>
-  <div>
-    <%= image_tag (picture.image) %>
-  </div>
-  <div>
-    <%= picture.content %>
-  </div>
-  <div class="">
-    <%= link_to 'show', picture_path(picture.id) %>
-    <%= link_to 'edit', edit_picture_path(picture.id) %>
-    <%= link_to 'destroy', picture_path(picture.id), method: :delete ,data: {confirm: '削除していいですか？'} %>
-  </div>
-<% end %>
+  <% end %>
+</div>
